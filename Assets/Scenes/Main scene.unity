@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144084970}
   - component: {fileID: 144084969}
+  - component: {fileID: 144084971}
   m_Layer: 0
   m_Name: Water4AdvancedReflectionSceneCamera
   m_TagString: Untagged
@@ -188,13 +189,22 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144084968}
-  m_LocalRotation: {x: 0.235304, y: -0.3980265, z: -0.105949804, w: -0.8803304}
-  m_LocalPosition: {x: 2.0780675, y: -0, z: -1.1749321}
+  m_LocalRotation: {x: 0.07309981, y: 0.4030469, z: -0.033256784, w: 0.9116489}
+  m_LocalPosition: {x: 2.2566845, y: -0, z: -1.0583092}
   m_LocalScale: {x: 0.16518754, y: 0.98358107, z: 0.12611003}
   m_Children: []
   m_Father: {fileID: 910280069}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &144084971
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144084968}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1001 &144575410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -407,6 +417,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 144575410}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &778146077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7037777454279515667, guid: 4052b6017e46d2347adcd8357bab2bdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1608528459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &778146079
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778146077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!136 &778146080
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778146077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.22159848
+  m_Height: 1.8870263
+  m_Direction: 1
+  m_Center: {x: -0.14012213, y: 0.44351318, z: -0.10153477}
 --- !u!1 &780791531
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +1000,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1568981271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568981268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe7ee31005db114082730c768466828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1568981268}
+  DeadPlayer: {fileID: 2478982436600631947, guid: c674ef82d98bba24da674429152b6a3a,
+    type: 3}
 --- !u!136 &1568981272
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -967,7 +1026,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 1.9275929
+  m_Height: 1.93
   m_Direction: 1
   m_Center: {x: -0.007259369, y: 0.93120354, z: 0}
 --- !u!54 &1568981273
@@ -999,25 +1058,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1438961458}
     m_Modifications:
+    - target: {fileID: 3707964194468458609, guid: 4052b6017e46d2347adcd8357bab2bdd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746259441123612868, guid: 4052b6017e46d2347adcd8357bab2bdd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7037777454279515667, guid: 4052b6017e46d2347adcd8357bab2bdd,
         type: 3}
       propertyPath: m_Name
       value: Cactus_udugcdmfa
       objectReference: {fileID: 0}
+    - target: {fileID: 7037777454279515667, guid: 4052b6017e46d2347adcd8357bab2bdd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Cactus
+      objectReference: {fileID: 0}
     - target: {fileID: 7916941194323300520, guid: 4052b6017e46d2347adcd8357bab2bdd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4950008
+      value: 3.24
       objectReference: {fileID: 0}
     - target: {fileID: 7916941194323300520, guid: 4052b6017e46d2347adcd8357bab2bdd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.93681335
+      value: -0.93
       objectReference: {fileID: 0}
     - target: {fileID: 7916941194323300520, guid: 4052b6017e46d2347adcd8357bab2bdd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.374134
+      value: 5.64
       objectReference: {fileID: 0}
     - target: {fileID: 7916941194323300520, guid: 4052b6017e46d2347adcd8357bab2bdd,
         type: 3}
@@ -1361,7 +1435,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 027f00c86c565a44f865fc7c749b99e5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 108.04
+      value: 108.14
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 027f00c86c565a44f865fc7c749b99e5,
         type: 3}
@@ -1411,7 +1485,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 027f00c86c565a44f865fc7c749b99e5,
         type: 3}
       propertyPath: m_Name
-      value: The Adventurer Blake (1)
+      value: The Adventurer Blake
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 027f00c86c565a44f865fc7c749b99e5,
         type: 3}
