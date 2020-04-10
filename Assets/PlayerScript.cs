@@ -10,13 +10,24 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // при столкновении с кактусом, игрок умирает.
         if (other.tag == "Cactus")
         {
             Player.SetActive(false);
             DeadPlayer.SetActive(true);
             Instantiate(DeadPlayer, transform.position, transform.rotation);
         }
+
+        if (other.tag == "Water")
+        {
+            // ApplyDamage(10);
+            Debug.Log("water!"); 
+            RenderSettings.fog = true;
+        }
     }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
