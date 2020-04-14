@@ -53,10 +53,12 @@ namespace Quixel
 
         private JObject mapNames;
 
-        private float currentOperationCount = 0;
-        private float maxNumberOfOperations = 0;
-        private string progressHeading = "Processing Asset";
-        private string progressMessage = "Processing Asset";
+        // убрал, так как в файле не используется, а unity выдавал ошибки
+
+        //private float currentOperationCount = 0;
+        //private float maxNumberOfOperations = 0;
+        //private string progressHeading = "Processing Asset";
+        //private string progressMessage = "Processing Asset";
 
         /// <summary>
         /// Takes an imported JSON object, and breaks it into relevant components and data.

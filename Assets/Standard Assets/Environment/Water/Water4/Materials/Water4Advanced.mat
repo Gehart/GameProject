@@ -129,7 +129,7 @@ Material:
     - _BaseColor: {r: 0.10475259, g: 0.18506087, b: 0.20754719, a: 0.82}
     - _BumpDirection: {r: 40, g: 40, b: 40, a: -40}
     - _BumpMap_ST: {r: 1, g: 1, b: 0, a: 0}
-    - _BumpTiling: {r: 0.12, g: 0.07, b: 0.08, a: 0.06}
+    - _BumpTiling: {r: 0.12, g: 0.07, b: 0.1, a: 0.1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DepthColor: {r: 0.027511697, g: 0.14179105, b: 0.13226777, a: 0.4627451}
     - _DepthColorFade: {r: 0.8880597, g: 0.27834705, b: 0.44463244, a: 0.22352941}
@@ -137,13 +137,13 @@ Material:
     - _DisplacementXz: {r: 0.6499999, g: -2.9203715, b: 1.6599998, a: -3.9363046}
     - _DistortParams: {r: 1.4399999, g: -0.5, b: 2.37, a: -1.21}
     - _Extinction: {r: 4.5, g: 75, b: 300, a: 1}
-    - _Foam: {r: 0.353, g: 0, b: 0, a: 0}
+    - _Foam: {r: 0.353, g: 0.064, b: 0, a: 0}
     - _FoamWaveParams: {r: 0, g: 0.24918434, b: 3.3395782, a: 1}
     - _Fresnel_ST: {r: 1, g: 1, b: 0, a: 0}
     - _GAmplitude: {r: 0.14, g: 0.76, b: 0.175, a: 0.225}
     - _GDirectionAB: {r: 0.46914357, g: 0.35405126, b: -0.2, a: 0.1}
     - _GDirectionCD: {r: 0.7033888, g: -0.6799999, b: 0.7175735, a: -0.2}
-    - _GFrequency: {r: 0.5, g: 0.38, b: 0.59, a: 0.6}
+    - _GFrequency: {r: 2, g: 0.38, b: 1, a: 0.6}
     - _GSpeed: {r: -3, g: 2, b: 1, a: 3}
     - _GSteepness: {r: 7, g: 2, b: 6, a: 2}
     - _HorizonColor: {r: 0.052907113, g: 0.24486735, b: 0.2835821, a: 1}

@@ -37,14 +37,14 @@ namespace Quixel {
             isRunning = false;
             tcpListener.Stop ();
             tcpListenerThread.Abort();
-            Debug.Log ("Quixel Bridge Livelink - Status: Disabled.");
+           // Debug.Log ("Quixel Bridge Livelink - Status: Disabled.");
         }
 
         private void ListenForIncommingRequests () {
             try {
                 tcpListener = new TcpListener (IPAddress.Parse ("127.0.0.1"), 13081);
                 tcpListener.Start ();
-                Debug.Log ("Quixel Bridge Livelink - Status: Enabled.");
+                // // Debug.Log ("Quixel Bridge Livelink - Status: Enabled.");
                 Byte[] bytes = new Byte[512];
                 while (true) {
                     using (connectedTcpClient = tcpListener.AcceptTcpClient ()) {
@@ -60,8 +60,8 @@ namespace Quixel {
                                     clientMessage += encodingUnicode.GetString(incommingData);
                                 } catch (Exception ex)
                                 {
-                                    Debug.Log("Bridge LiveLink Exception::Error::Encoding json data.");
-                                    Debug.Log("Exception: " + ex.ToString());
+                                     Debug.Log("Bridge LiveLink Exception::Error::Encoding json data.");
+                                     Debug.Log("Exception: " + ex.ToString());
                                 }
                             }
                             jsonData.Add (clientMessage);
@@ -69,7 +69,7 @@ namespace Quixel {
                     }
                 }
             } catch (SocketException socketException) {
-                Debug.Log ("Bridge Livelink - Status: Stopped.");
+                 Debug.Log ("Bridge Livelink - Status: Stopped.");
                 Debug.Log ("SocketException " + socketException.ToString ());
             }
         }
