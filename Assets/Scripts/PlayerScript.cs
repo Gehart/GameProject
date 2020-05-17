@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.tag == "DangerousObject")
         {
-            currentHealth -= 25;
+            TakeDamage(25);
         }
     }
 

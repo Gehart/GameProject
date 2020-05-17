@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public LayerMask playerLayer;
     public int attackDamage;
-
+    private Animator animator;
     private void attack()
     {
         Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
-
+        animator.SetTrigger("GetDamage");
         if (currentHealth <= 0)
         {
             die();
@@ -35,12 +35,14 @@ public class Enemy : MonoBehaviour
 
     void die()
     {
-        this.GetComponent<Animator>().SetBool("Dead", true);
+        Debug.Log("Emeny die");
+        animator.SetBool("Dead", true);
     }
 
 
     void Start()
     {
         currentHealth = health;
+        animator = this.GetComponent<Animator>();
     }
 }
