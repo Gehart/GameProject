@@ -12,14 +12,24 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
     public int attackDamage;
     private Animator animator;
-    private void attack()
-    {
-        Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
 
-        foreach (Collider player in hitPlayers)
+    public float attackSpeed = 1f;
+    public float attackCooldown = 0f;
+
+    public void attack()
+    {
+        if(attackCooldown <= 0f)
         {
-            Debug.Log("we hit " + player.name);
-            player.GetComponent<PlayerScript>().TakeDamage(attackDamage);
+            attackCooldown = 1f / attackSpeed;
+            Debug.Log("Attack by enemy");
+
+            Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+
+            foreach (Collider player in hitPlayers)
+            {
+                Debug.Log("we hit " + player.name);
+                player.GetComponent<PlayerScript>().TakeDamage(attackDamage);
+            }
         }
     }
 
@@ -44,5 +54,10 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = health;
         animator = this.GetComponent<Animator>();
+    }
+
+    public void Update()
+    {
+        attackCooldown -= Time.deltaTime;
     }
 }

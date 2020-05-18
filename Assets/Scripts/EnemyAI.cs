@@ -5,34 +5,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
     [RequireComponent(typeof(ThirdPersonCharacter))]
-    public class AICharacterControl : MonoBehaviour
+    public class EnemyAI : MonoBehaviour
     {
         public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
         public ThirdPersonCharacter character { get; private set; } // the character we are controlling
+        public Enemy enemy;
         public Transform target;                                    // target to aim for
 
-        public Transform attackPoint;
-        public float attackRange;
-        public LayerMask playerLayer;
-        public int attackDamage;
-
-        private void attack()
-        {
-            Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
-
-            foreach (Collider player in hitPlayers)
-            {
-                Debug.Log("we hit " + player.name);
-                player.GetComponent<PlayerScript>().TakeDamage(attackDamage);
-            }
-        }
 
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
             agent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
-
+            enemy = GetComponent<Enemy>();
             agent.updateRotation = false;
             agent.updatePosition = true;
         }
@@ -46,8 +32,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 character.Move(agent.desiredVelocity, false, false);
             else
             {
-                character.Move(Vector3.zero, false, false);
-                attack();
+                enemy.attack();
+                // character.Move(Vector3.zero, false, false);
             }
         }
 

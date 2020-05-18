@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviour
     public Transform attackPoint;
     public float attackRange;
     public LayerMask enemyLayers;
-    public int attackDamage;
+    public int attackDamage = 25;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -57,7 +57,7 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("Haha!");
             return;
         }
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
     
