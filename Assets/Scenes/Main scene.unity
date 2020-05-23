@@ -236,8 +236,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144084968}
-  m_LocalRotation: {x: 0.00088689005, y: -0.09613908, z: -0.0000069447856, w: -0.9953675}
-  m_LocalPosition: {x: 2.0847495, y: -0, z: -1.2578845}
+  m_LocalRotation: {x: 0.06620842, y: -0.031118974, z: -0.0019114652, w: -0.9973186}
+  m_LocalPosition: {x: 2.8084166, y: -0, z: -1.6228911}
   m_LocalScale: {x: 0.16518754, y: 0.98358107, z: 0.12611003}
   m_Children:
   - {fileID: 659553719}
@@ -981,7 +981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5997599ce539b3547823e466afe680cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 100
   attackPoint: {fileID: 1629259311}
   attackRange: 0.5
   playerLayer:
@@ -990,6 +990,7 @@ MonoBehaviour:
   attackDamage: 40
   attackSpeed: 1
   attackCooldown: 0
+  enemy: {fileID: 1136741219}
 --- !u!114 &1136741228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,7 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28160aeb56173042a5af825eafe959c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 1136741227}
   target: {fileID: 1568981275}
 --- !u!1 &1182249148 stripped
 GameObject:
@@ -2585,6 +2586,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1568981269, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1568981271, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
       propertyPath: Player
       value: 
@@ -2599,7 +2604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1568981271, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
       propertyPath: currentHealth
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1568981271, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
       propertyPath: healthBar
@@ -2607,7 +2612,7 @@ PrefabInstance:
       objectReference: {fileID: 587990227}
     - target: {fileID: 1568981271, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
       propertyPath: attackRange
-      value: 0.18
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1568981271, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
       propertyPath: enemyLayers.m_Bits
@@ -2619,7 +2624,15 @@ PrefabInstance:
       objectReference: {fileID: 822878118}
     - target: {fileID: 1568981271, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
       propertyPath: attackDamage
-      value: 15
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568981271, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 1287286173}
+    - target: {fileID: 1568981271, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1568981272, guid: 4b9ad794c60fa424e9adc5d2b6d3fbcf, type: 3}
       propertyPath: m_IsTrigger

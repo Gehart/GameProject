@@ -1,51 +1,55 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+
+public class PlayerScript : BaseCharacter
 {
-    public GameObject Player;
+    //public int maxHealth = 100;
+    //public int currentHealth;
 
-    public int maxHealth = 100;
-    public int currentHealth;
+    //public Transform attackPoint;
+    //public float attackRange;
+    //private Animator animator;
+    //public int attackDamage = 25;
 
-    public HealthBar healthBar;
-    public Transform attackPoint;
-    public float attackRange;
     public LayerMask enemyLayers;
-    public int attackDamage = 25;
+    public HealthBar healthBar;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "DangerousObject")
         {
-            TakeDamage(25);
+            takeDamage(25);
         }
     }
 
-    /*private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "DangerousObject")
-        {
-            currentHealth -= 1;
-        }
-    }*/
-
-    public void TakeDamage(int damage)
+    public override void takeDamage(int damage)
     {
         currentHealth -= damage;
+        animator.SetTrigger("GetDamage");
 
         healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0)
+        {
+            die();
+        }
     }
 
-    void Attack()
+    protected override void die()
+    {
+        animator.SetBool("Dead", true);
+        Destroy(GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>());
+    }
+
+
+    public override void Attack()
     {
         // атакует всех, оказавшихся в радиусе круга с радиусом attackRange
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
-        foreach(Collider enemy in hitEnemies)
+        foreach (Collider enemy in hitEnemies)
         {
-            Debug.Log("we hit " + enemy.name);
             enemy.GetComponent<Enemy>().takeDamage(attackDamage);
         }
     }
@@ -54,29 +58,25 @@ public class PlayerScript : MonoBehaviour
     {
         if (attackPoint == null)
         {
-            Debug.Log("Haha!");
             return;
         }
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
-    
+
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Player.GetComponent<Animator>().SetTrigger("Punching");
+            animator.SetTrigger("Punching");
             Attack();
-        }
-        if( currentHealth <= 0)
-        {
-            Player.GetComponent<Animator>().SetBool("Dead", true);
         }
     }
 }

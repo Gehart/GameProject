@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
@@ -12,7 +13,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public Enemy enemy;
         public Transform target;                                    // target to aim for
 
-
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
@@ -21,6 +21,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             enemy = GetComponent<Enemy>();
             agent.updateRotation = false;
             agent.updatePosition = true;
+            SetTarget(PlayerManager.instance.player.transform);
         }
 
         private void Update()
@@ -32,11 +33,19 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 character.Move(agent.desiredVelocity, false, false);
             else
             {
-                enemy.attack();
-                // character.Move(Vector3.zero, false, false);
+                FaceTarget();
+                enemy.Attack();
+                character.Move(Vector3.zero, false, false);
             }
         }
 
+        // встаём лицом к игроку
+        void FaceTarget()
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
 
         public void SetTarget(Transform target)
         {
